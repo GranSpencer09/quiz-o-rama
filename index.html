@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz-O-Rama</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Link to CSS -->
+    <link rel="stylesheet" type="text/css" href="./quiz-o-rama/" />
+  </head>
+  <!-- General structure of the quiz from CodingNinjas -->
+  <body>
+    <div class="container">
+      <div class="time-scores">
+        <div id="user-timer">30 seconds</div>
+        <div id="high-scores">View High Scores</div>
+      </div>
+      <h1>San Francisco Giants Baseball Quiz</h1>
+
+      <!-- Timer -->
+      <div class="score">
+        <span id="user-score">0</span>
+        <span id="total-score">/ 10</span>
+      </div>
+      <!-- Where the questions and answer buttons show up -->
+      <div class="content" id="question-place">
+        <div id="question-text"></div>
+        <div id="options">
+          <button class="btn btn-tf" id="True">True</button>
+          <button class="btn btn-tf" id="False">False</button>
+          <button class="btn btn-option" id="A">A</button>
+          <button class="btn btn-option" id="B">B</button>
+          <button class="btn btn-option" id="C">C</button>
+          <button class="btn btn-option" id="D">D</button>
+        </div>
+      </div>
+      <!-- Buttons to control the quiz -->
+      <div class="control">
+        <button class="btn btn-restart" id="restart">Restart</button>
+        <button class="btn btn-next" id="next">Next</button>
+        <button class="btn btn-prev" id="previous">Previous</button>
+      </div>
+    </div>
+    <!-- Link to JS -->
+    <script src="./script.js"></script>
+  </body>
+</html>

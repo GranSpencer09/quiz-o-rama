@@ -1,0 +1,85 @@
+ /* Remove defauly padding and set font family */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* set heigh & width, give gradient Giants color, flex and center */
+body {
+  background: linear-gradient(to left, #EFD19F,#FD5A1E);
+  height: 100vh;
+  width: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  flex-direction: column;
+  align-items: center;
+}
+/* style the container holding all the Q's and options */
+.container {
+  width: 80vw;
+  max-width: 80%;
+  height: 70vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 0 3px 2px;
+}
+
+.time-scores {
+  width: 90%;
+  font-size: large;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+h1 {
+  color: #EFD19F;
+}
+
+#user-timer {
+  text-align: left;
+  color: #EFD19F;
+}
+
+#high-scores {
+  text-align: right;
+  color: #EFD19F;
+}
+
+.score {
+  font-size: large;
+  font-weight: bold;
+}
+
+#total-score {
+  color: #EFD19F;
+}
+
+#user-score {
+  color: #EFD19F;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn {
+  font-size: large;
+  font-weight: bold;
+  padding: 7px;
+  border-radius: 50%;
+  box-shadow: 0 0 50px #ccc;
+}
