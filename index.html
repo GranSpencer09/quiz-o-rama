@@ -25,12 +25,16 @@
       <div class="content" id="question-place">
         <div id="question-text"></div>
         <div id="options">
-          <button class="btn btn-tf" id="True">True</button>
-          <button class="btn btn-tf" id="False">False</button>
-          <button class="btn btn-option" id="A">A</button>
-          <button class="btn btn-option" id="B">B</button>
-          <button class="btn btn-option" id="C">C</button>
-          <button class="btn btn-option" id="D">D</button>
+          <div id="true-False">
+            <button class="btn btn-tf" id="true">True</button>
+            <button class="btn btn-tf" id="false">False</button>
+          </div>
+          <div id="mul-choice">
+            <button class="btn btn-option" id="a">A</button>
+            <button class="btn btn-option" id="b">B</button>
+            <button class="btn btn-option" id="c">C</button>
+            <button class="btn btn-option" id="d">D</button>
+          </div>
         </div>
       </div>
       <!-- Buttons to control the quiz -->
@@ -38,8 +42,11 @@
         <button class="btn btn-restart" id="restart">Restart</button>
         <button class="btn btn-next" id="next">Next</button>
         <button class="btn btn-prev" id="previous">Previous</button>
+        <button class="btn btn-submit" id="submit">Submit</button>
       </div>
     </div>
+    <!-- Link to Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- Link to JS -->
     <script src="./script.js"></script>
   </body>

@@ -5,6 +5,10 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.hide {
+  display: none;
+}
+
 /* set heigh & width, give gradient Giants color, flex and center */
 body {
   background: linear-gradient(to left, #EFD19F,#FD5A1E);
@@ -13,8 +17,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-repeat: no-repeat;
-  flex-direction: column;
   align-items: center;
 }
 /* style the container holding all the Q's and options */
@@ -79,7 +81,24 @@ h1 {
 .btn {
   font-size: large;
   font-weight: bold;
-  padding: 7px;
+  padding: 10px;
+  margin: 5px;
   border-radius: 50%;
   box-shadow: 0 0 50px #ccc;
 }
+
+.btn:hover {
+  color: #27251F;
+  padding: 10px;
+}
+
+.options {
+  padding: 20px;
+  order: 3;  
+}
+
+.controls {
+  padding: 20px;
+  order: 4;
+}
+
