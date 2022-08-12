@@ -10,21 +10,34 @@
   <!-- General structure of the quiz from CodingNinjas -->
   <body>
     <div class="container">
-      <div class="time-scores">
-        <div id="user-timer">30 seconds</div>
-        <div id="high-scores">View High Scores</div>
+      <div id="welcome-screen">
+        <h1>San Francisco Giants Baseball Quiz</h1>
+        <p>
+          rules here Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          Provident ipsum a, pariatur amet at quia?
+        </p>
+        <button id="start">Start Game</button>
       </div>
-      <h1>San Francisco Giants Baseball Quiz</h1>
+      <div id="timerEl" class="hide">
+        <div id="user-timer"></div>
+        <div id="score" class="score"></div>
+      </div>
+      <div class="hide" id="question-container">
+        <div id="question-text"></div>
+        <div id="optionButtons"></div>
+      </div>
+      <div id="end-screen" class="hide">
+        <div id="user-score"></div>
+        <div id="high-scores"></div>
+        <div id="restart-button"></div>
+      </div>
 
       <!-- Timer -->
-      <div class="score">
-        <span id="user-score">0</span>
-        <span id="total-score">/ 10</span>
-      </div>
+
       <!-- Where the questions and answer buttons show up -->
-      <div class="content" id="question-place">
-        <div id="question-text"></div>
-        <div id="options">
+      <!-- <div class="content" id="question-place">
+        
+        <div id="options btn">
           <div id="true-False">
             <button class="btn btn-tf" id="true">True</button>
             <button class="btn btn-tf" id="false">False</button>
@@ -36,14 +49,18 @@
             <button class="btn btn-option" id="d">D</button>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- Buttons to control the quiz -->
-      <div class="control">
-        <button class="btn btn-restart" id="restart">Restart</button>
-        <button class="btn btn-next" id="next">Next</button>
-        <button class="btn btn-prev" id="previous">Previous</button>
+      <!-- <div class="controls">
+        <div>
+          <button class="btn btn-restart" id="restart">Restart</button>
+        </div>
+        <div>
+          <button class="btn btn-next" id="next">Next</button>
+          <button class="btn btn-prev" id="previous">Previous</button>
+        </div>
         <button class="btn btn-submit" id="submit">Submit</button>
-      </div>
+      </div> -->
     </div>
     <!-- Link to Jquery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

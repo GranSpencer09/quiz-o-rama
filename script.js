@@ -11,6 +11,7 @@ var prevBtn = $("#previous");
 var nextBtn = $("#next");
 var restartBtn = $("#restart");
 var submitBtn = $("#submit");
+var startBtn = $("#start");
 
 var userScore = $("#user-score");
 var totalScore = $("#total-score");
@@ -21,6 +22,7 @@ var currentQuestion = 0;
 
 var score = 0;
 
+var endGameMessage = "Congrats on finishing the game";
 var questions = [
   {
     question: "Who was the first Giant to hit 500 career home runs?",
@@ -77,57 +79,107 @@ var questions = [
 
 // Event listeners
 restartBtn.on("click", restart);
-prevBtn.on("click", previous);
-nextBtn.on("click", next);
-submitBtn.on("click", submit);
+// prevBtn.on("click", previous);
+// nextBtn.on("click", next);
+//submitBtn.on("click", submit);
+startBtn.on("click", beginQuiz);
 
 console.log(questions);
 
 var currentQuestion = 0;
+var userTimer = 30;
+
+var timerEl = document.getElementById("timerEl");
+var userTimerEl = document.getElementById("user-timer");
+var scoreEl = document.getElementById("score");
+
+console.log(timerEl);
 
 // Function to begin quiz
-// function beginQuiz() {{
-// }
+function beginQuiz(event) {
+  console.log("start game", event);
+  document.getElementById("welcome-screen").classList.add("hide");
 
-// beginQuiz();
+  timerEl.classList.remove("hide");
+  timerEl.classList.add("time-scores");
+  userTimerEl.textContent = `Time left: ${userTimer}`;
+  timer();
+
+  scoreEl.textContent = `Score: ${score}`;
+  document.getElementById("question-container").classList.remove("hide");
+  showNextQuestion();
+}
+
+// Function to move user to the next question
+function showNextQuestion() {
+  if (currentQuestion < 5) {
+    document.getElementById("question-text").textContent =
+      questions[currentQuestion].question;
+
+    document.getElementById("optionButtons").innerHTML = "";
+
+    for (let i = 0; i < questions[currentQuestion].answers.length; i++) {
+      var thisAnswer = questions[currentQuestion].answers[i];
+      var button = document.createElement("button");
+      button.classList.add("btn", "btn-tf");
+      button.dataset.isCorrect = thisAnswer.answer;
+      button.textContent = thisAnswer.option;
+      button.addEventListener("click", checkAnswer);
+      document.getElementById("optionButtons").append(button);
+    }
+    console.log(currentQuestion);
+  } else {
+    endGame();
+  }
+}
+
+// function to check if user answered correctly
+function checkAnswer(e) {
+  var isCorrect = e.target.dataset.isCorrect;
+  if (isCorrect === "true") {
+    score += 2;
+    scoreEl.textContent = `Score: ${score}`;
+  } else {
+    userTimer -= 5;
+    userTimerEl.textContent = `Time left: ${userTimer}`;
+  }
+  currentQuestion++;
+  showNextQuestion();
+}
 
 // Function to restart the game
 function restart() {
   currentQuestion = 0;
-  prevBtn.classList.remove("hide");
-  nextBtn.classList.remove("hide");
-  prevBtn.classList.remove("hide");
-  submitBtn.classList.remove("hide");
-  trueBtn.classList.remove("hide");
-  falseBtn.classList.remove("hide");
-  aBtn.classList.remove("hide");
-  bBtn.classList.remove("hide");
-  cBtn.classList.remove("hide");
-  dBtn.classList.remove("hide");
   score = 0;
+  userTimer = 30;
   beginQuiz();
 }
+// function that runs and displays timer, note it's set to 30 seconds here as well as other places
+function timer() {
+  if (userTimer === 0) {
+    endGame();
+  } else {
+    setInterval(timerCount, 1000);
+    function timerCount() {
+      userTimer -= 1;
+      userTimerEl.textContent = `Time left: ${userTimer}`;
+    }
+  }
+}
 
-// Function to move user to next question
-// function next() {
+function endGame() {
+  // var highScores = JSON.parse(localStorage.getElementById("score"));
+  document.getElementById("user-timer").classList.add("hide");
+  document.getElementById("optionButtons").classList.add("hide");
+  document.getElementById("question-text").textContent = endGameMessage;
+  // attempting to create restart button
+  var startBtn = document.createElement("button");
+  startBtn.textContent = "Click to play again";
+  startBtn.addEventListener("click", beginQuiz);
+  document.getElementById("restart-button").append(startBtn);
 
-// }
-
-// Function to move user back to previous question
-// function prev() {
-
-// }
-
-// Function to run when the user submits quiz
-function submit() {
-  prevBtn.classList.add("hide");
-  nextBtn.classList.add("hide");
-  submitBtn.classList.add("hide");
-  trueBtn.classList.add("hide");
-  falseBtn.classList.add("hide");
-  aBtn.classList.add("hide");
-  bBtn.classList.add("hide");
-  cBtn.classList.add("hide");
-  dBtn.classList.add("hide");
-  questionText.appendChild = "Congrats on finishing your quiz!";
+  // attempting to store score in localstorage and show top 5 high scores with initials
+  function showHighScores() {
+    highScores.append = userScore;
+  }
 }

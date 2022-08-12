@@ -13,11 +13,12 @@
 body {
   background: linear-gradient(to left, #EFD19F,#FD5A1E);
   height: 100vh;
-  width: 100vh;
+  /* width: 100vh; idk why this messes it up */
   display: flex;
   align-items: center;
   justify-content: center;
   align-items: center;
+  /* color: white; */
 }
 /* style the container holding all the Q's and options */
 .container {
@@ -32,6 +33,7 @@ body {
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 0 3px 2px;
+  color: white;
 }
 
 .time-scores {
@@ -88,17 +90,19 @@ h1 {
 }
 
 .btn:hover {
-  color: #27251F;
+  color: #bfb597;
   padding: 10px;
 }
 
 .options {
   padding: 20px;
-  order: 3;  
 }
 
 .controls {
   padding: 20px;
-  order: 4;
 }
 
+#question-text {
+  width: 50%;
+  height: 50%;
+}
