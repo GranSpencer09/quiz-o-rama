@@ -1,5 +1,7 @@
 # quiz-o-rama
-Timed test created using JS
+
+URL: https://granspencer09.github.io/quiz-o-rama/
+
 <img width="1395" alt="Screen Shot 2022-08-11 at 8 21 56 PM" src="https://user-images.githubusercontent.com/28960328/184279111-a73ae640-1052-4320-96fa-7768620865c7.png">
 
 
