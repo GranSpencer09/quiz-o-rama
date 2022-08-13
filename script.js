@@ -1,28 +1,41 @@
-// Declaring all variables
+// Referencing true and false buttons
 var trueBtn = $("#true");
 var falseBtn = $("#false");
 
+// Referencing multiple choice buttons
 var aBtn = $("#a");
 var bBtn = $("#b");
 var cBtn = $("#c");
 var dBtn = $("#d");
 
+// Referencing quiz control buttons
 var prevBtn = $("#previous");
 var nextBtn = $("#next");
 var restartBtn = $("#restart");
 var submitBtn = $("#submit");
 var startBtn = $("#start");
 
-var userScore = $("#user-score");
+// Referencing where scores are displayed during the quiz
+var userScore = $("#score");
 var totalScore = $("#total-score");
 
+// Setting up local storage for highscores
+var highScores = [];
+var userHighScore = localStorage.getItem("userHighScore");
+
+// Referencing where the questions are displayed
 var questionText = $("#question-text");
 
+// Setting value to zero to start quiz at first question
 var currentQuestion = 0;
 
+// Setting user's score to zero to at the start
 var score = 0;
 
+// What the user see's to tell them the quiz is over
 var endGameMessage = "Congrats on finishing the game";
+
+// JS array with questions, answers and which answer is right
 var questions = [
   {
     question: "Who was the first Giant to hit 500 career home runs?",
@@ -72,28 +85,21 @@ var questions = [
   },
 ];
 
-// timer
-// store high scores
-// view high scores
-// wrong answers hurt time and high score
+// restartBtn.on("click", restart);
 
-// Event listeners
-restartBtn.on("click", restart);
-// prevBtn.on("click", previous);
-// nextBtn.on("click", next);
-//submitBtn.on("click", submit);
 startBtn.on("click", beginQuiz);
 
 console.log(questions);
 
 var currentQuestion = 0;
+
 var userTimer = 30;
 
 var timerEl = document.getElementById("timerEl");
-var userTimerEl = document.getElementById("user-timer");
-var scoreEl = document.getElementById("score");
 
-console.log(timerEl);
+var userTimerEl = document.getElementById("user-timer");
+
+var scoreEl = document.getElementById("score");
 
 // Function to begin quiz
 function beginQuiz(event) {
@@ -127,7 +133,7 @@ function showNextQuestion() {
       button.addEventListener("click", checkAnswer);
       document.getElementById("optionButtons").append(button);
     }
-    console.log(currentQuestion);
+    console.log(score);
   } else {
     endGame();
   }
@@ -146,32 +152,25 @@ function checkAnswer(e) {
   currentQuestion++;
   showNextQuestion();
 }
-
+console.log(score);
 // Function to restart the game
-function restart() {
-  currentQuestion = 0;
-  score = 0;
-  userTimer = 30;
-  beginQuiz();
-}
+// function restart() {
+//   currentQuestion = 0;
+//   score = 0;
+//   userTimer = 30;
+//   beginQuiz();
+//}
+
 // function that runs and displays timer, note it's set to 30 seconds here as well as other places
-function timer() {
-  if (userTimer === 0) {
-    endGame();
-  } else {
-    setInterval(timerCount, 1000);
-    function timerCount() {
-      userTimer -= 1;
-      userTimerEl.textContent = `Time left: ${userTimer}`;
-    }
-  }
-}
 
 function endGame() {
-  // var highScores = JSON.parse(localStorage.getElementById("score"));
+  highScores.quizScore = score;
+  localStorage.setItem("highScores", JSON.stringify(userScore));
+
   document.getElementById("user-timer").classList.add("hide");
   document.getElementById("optionButtons").classList.add("hide");
   document.getElementById("question-text").textContent = endGameMessage;
+
   // attempting to create restart button
   var startBtn = document.createElement("button");
   startBtn.textContent = "Click to play again";
@@ -181,5 +180,16 @@ function endGame() {
   // attempting to store score in localstorage and show top 5 high scores with initials
   function showHighScores() {
     highScores.append = userScore;
+  }
+}
+
+function timer() {
+  setInterval(timerCount, 1000);
+  function timerCount() {
+    userTimer -= 1;
+    userTimerEl.textContent = `Time left: ${userTimer}`;
+    if (userTimer === 0) {
+      endGame();
+    }
   }
 }
